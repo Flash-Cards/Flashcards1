@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_antesComenzar">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ANTES DE COMENZAR"
+        android:textColor="#000000"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_marginTop="25dp">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/bempezar"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar y comenzar"
+        android:textColor="#ffffff"
+        android:background="@drawable/radiusborder"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="200dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/insertpalabra"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:text="Insertar palabra"
+        android:textColor="#ffffff"
+        android:background="@drawable/radiusborder"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:textAlignment="center"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="80dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/bborrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Borrar palabra"
+        android:textColor="#ffffff"
+        android:background="@drawable/radiusborder"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:textAlignment="center"
+        android:layout_marginTop="220dp"
+        android:layout_marginLeft="350dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/bconsultar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lista palabras"
+        android:textColor="#ffffff"
+        android:background="@drawable/radiusborder"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:textAlignment="center"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="250dp">
+
+    </Button>
+</RelativeLayout>

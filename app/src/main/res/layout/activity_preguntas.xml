@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".Preguntas">
+
+    <Button
+        android:id="@+id/bpregunta"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:text="Pregunta"
+        android:background="#000000"
+        android:textColor="#ffffff"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="114dp"></Button>
+
+    <Button
+        android:id="@+id/bopcion1"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="afsdf"
+        android:textColor="#ffffff"
+        android:background="#000000"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="80dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/bopcion2"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="afsdf"
+        android:textColor="#ffffff"
+        android:background="#000000"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="350dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/bopcion3"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="afsdf"
+        android:textColor="#ffffff"
+        android:background="#000000"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="80dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/bopcion4"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="afsdf"
+        android:textColor="#ffffff"
+        android:background="#000000"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="350dp">
+
+    </Button>
+
+
+</RelativeLayout>
