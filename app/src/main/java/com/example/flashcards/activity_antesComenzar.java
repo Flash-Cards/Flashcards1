@@ -33,7 +33,7 @@ public class activity_antesComenzar extends AppCompatActivity {
        bconsultar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (v.getContext(), Preguntas.class);
+                Intent intent = new Intent (v.getContext(), Lista_palabras.class);
                 startActivityForResult(intent, 0);
             }
         });
