@@ -33,14 +33,14 @@ public class activity_seleccionarempezar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccionarempezar);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        Deseleccionarpalabra();
         mEditTextNum = findViewById(R.id.texto_editar);
         mTextViewNum = findViewById(R.id.tiempo_muestra);
         mButton1 = findViewById(R.id.set_text);
 
         bcomenzar = (Button) findViewById(R.id.bcomenzar);
         lv1 = (ListView) findViewById(R.id.lv1);
-        Deseleccionarpalabra();
+
 
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 1);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
@@ -85,7 +85,7 @@ public class activity_seleccionarempezar extends AppCompatActivity {
                 mEditTextNum.setText("");
 
                 System.out.println(mTiempo);
-                    if(cantidad>=1){
+                    if((cantidad >= 1) && (mTiempo != "")){
                         Intent intent = new Intent(activity_seleccionarempezar.this, activity_flashcard.class);
                         intent.putExtra("segs",mTiempo);
                         startActivity(intent);

@@ -41,6 +41,8 @@ public class activity_insertarPalabra extends AppCompatActivity {
     private Uri Imagepath;
     private Bitmap imageToStore;
     private  byte[] imageInBytes;
+    byte[] vacioimageInBytes;
+    String palabra;
     private ByteArrayOutputStream objectByteArrayOutputStream;
 
     private static final String LOG_TAG = "AudioRecordTest";
@@ -88,7 +90,7 @@ public class activity_insertarPalabra extends AppCompatActivity {
         binsertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Insertar();
+                    Insertar();
             }
         });
 
@@ -214,7 +216,8 @@ public class activity_insertarPalabra extends AppCompatActivity {
 
         String palabra= etpalabra.getText().toString();
 
-        if (!palabra.isEmpty()){
+        String mimageInbytes = imageToStoreBitmap.toString();
+        if (!palabra.isEmpty() && !fileName.isEmpty() && mimageInbytes != ""){
             ContentValues registro= new ContentValues();
             registro.put("palabra",palabra);
             registro.put("audio",fileName);
