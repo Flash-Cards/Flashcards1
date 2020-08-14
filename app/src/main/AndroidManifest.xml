@@ -13,16 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Preguntas"></activity>
-        <activity android:name=".activity_seleccionarempezar" />
-        <activity android:name=".activity_flashcard" />
-        <activity android:name=".Borrar_palabras" />
+        <activity android:name=".Preguntas"  android:screenOrientation="landscape"></activity>
+        <activity android:name=".activity_seleccionarempezar"   android:screenOrientation="landscape"/>
+        <activity android:name=".activity_flashcard"  android:screenOrientation="landscape"/>
+        <activity android:name=".Borrar_palabras"  android:screenOrientation="landscape"/>
         <activity
             android:name=".Lista_palabras"
             android:label="@string/title_activity_lista_palabras"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity_insertarPalabra" />
-        <activity android:name=".activity_antesComenzar" />
+            android:theme="@style/AppTheme.NoActionBar"  android:screenOrientation="landscape"/>
+        <activity android:name=".activity_insertarPalabra" android:screenOrientation="landscape" />
+        <activity android:name=".activity_antesComenzar" android:screenOrientation="landscape" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape">
