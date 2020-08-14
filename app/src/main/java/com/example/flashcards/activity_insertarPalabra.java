@@ -215,9 +215,10 @@ public class activity_insertarPalabra extends AppCompatActivity {
         imageInBytes=objectByteArrayOutputStream.toByteArray();
 
         String palabra= etpalabra.getText().toString();
+        String mfoto = Imagepath.toString();
 
         String mimageInbytes = imageToStoreBitmap.toString();
-        if (!palabra.isEmpty() && !fileName.isEmpty() && mimageInbytes != ""){
+        if (!palabra.isEmpty() && !fileName.isEmpty() && mfoto != ""){
             ContentValues registro= new ContentValues();
             registro.put("palabra",palabra);
             registro.put("audio",fileName);
