@@ -41,7 +41,6 @@ public class activity_insertarPalabra extends AppCompatActivity {
     private Uri Imagepath;
     private Bitmap imageToStore;
     private  byte[] imageInBytes;
-    byte[] vacioimageInBytes;
     String palabra;
     private ByteArrayOutputStream objectByteArrayOutputStream;
 
@@ -80,8 +79,8 @@ public class activity_insertarPalabra extends AppCompatActivity {
         bseleccionarimagen = findViewById(R.id.bseleccionarimagen);
         Vimagen = findViewById(R.id.Vimagen);
 
-        fileName = getExternalCacheDir().getAbsolutePath();
-        fileName += "/Audio " + System.currentTimeMillis() + ".3gp";
+        fileName = null;
+
 
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
@@ -90,13 +89,23 @@ public class activity_insertarPalabra extends AppCompatActivity {
         binsertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                palabra= etpalabra.getText().toString();
+                if (!palabra.isEmpty() && fileName != null && Imagepath != null){
                     Insertar();
+                }else{
+
+                    Toast.makeText(activity_insertarPalabra.this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
         boton_grabar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fileName = getExternalCacheDir().getAbsolutePath();
+                fileName += "/Audio " + System.currentTimeMillis() + ".3gp";
+
                 recorder = new MediaRecorder();
                 recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
                 recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
@@ -158,6 +167,8 @@ public class activity_insertarPalabra extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     @Override
@@ -214,11 +225,11 @@ public class activity_insertarPalabra extends AppCompatActivity {
 
         imageInBytes=objectByteArrayOutputStream.toByteArray();
 
-        String palabra= etpalabra.getText().toString();
-        String mfoto = Imagepath.toString();
 
-        String mimageInbytes = imageToStoreBitmap.toString();
-        if (!palabra.isEmpty() && !fileName.isEmpty() && mfoto != ""){
+
+
+
+        if (!palabra.isEmpty() && !fileName.isEmpty() && Imagepath != null){
             ContentValues registro= new ContentValues();
             registro.put("palabra",palabra);
             registro.put("audio",fileName);
@@ -228,6 +239,8 @@ public class activity_insertarPalabra extends AppCompatActivity {
 
             BaseDeDatos.close();
             etpalabra.setText(" ");
+            fileName = null;
+            Imagepath = null;
 
             Toast.makeText(this,"Se agrego la palabra",Toast.LENGTH_SHORT).show();
         }else{
