@@ -41,7 +41,7 @@ public class activity_seleccionarempezar extends AppCompatActivity {
         bcomenzar = (Button) findViewById(R.id.bcomenzar);
         lv1 = (ListView) findViewById(R.id.lv1);
 
-
+        cantidad=0;
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 1);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
 
@@ -84,13 +84,13 @@ public class activity_seleccionarempezar extends AppCompatActivity {
 
                 mEditTextNum.setText("");
 
-                System.out.println(mTiempo);
-                    if((cantidad >= 1) && (mTiempo != "")){
+
+                    if((cantidad >= 1) && (!mTiempo.isEmpty())){
                         Intent intent = new Intent(activity_seleccionarempezar.this, activity_flashcard.class);
                         intent.putExtra("segs",mTiempo);
                         startActivity(intent);
                     }else{
-                        Toast.makeText(v.getContext(),"No se seleccionaron palabras",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(),"Debe seleccionar palabras e ingresar el tiempo",Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -102,11 +102,6 @@ public class activity_seleccionarempezar extends AppCompatActivity {
             public void onClick(View v) {
             }
         });
-
-
-
-
-
 
     }
 
@@ -138,11 +133,15 @@ public class activity_seleccionarempezar extends AppCompatActivity {
         cantidad = BaseDeDatabase.update("palabras",registro,"seleccion='1'",null);
         BaseDeDatabase.close();
 
-        if (cantidad==1){
+        if (cantidad>=1){
             Toast.makeText(this, "Se removieron las palabras seleccionadas", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(this, "Error al remover las palabras", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void onResume() {
+        super.onResume();
+        Deseleccionarpalabra();
+        cantidad=0;
     }
 }
 
