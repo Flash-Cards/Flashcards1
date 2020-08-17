@@ -103,6 +103,17 @@ public class activity_flashcard extends AppCompatActivity {
 
         @Override
         public void run() {
+                int canpalabra = listapalabras.get(i).toString().length();
+                int tamtexto,t,tamletra=100;
+                if(canpalabra > 7){
+                    tamtexto = canpalabra - 7;
+                    for (t=1;t<=tamtexto;t++){
+                        tamletra= tamletra-5;
+                    }
+                    tflash.setTextSize(tamletra);
+                }else{
+                    tflash.setTextSize(tamletra);
+                }
                 tflash.setText(listapalabras.get(i).toString());
 
                 mhandler.postDelayed(cambiar,mTiempoEnMilis2);
