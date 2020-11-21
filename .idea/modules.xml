@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Flash_cards.iml" filepath="$PROJECT_DIR$/.idea/modules/Flash_cards.iml" group="Flash_cards" />
+      <module fileurl="file://$PROJECT_DIR$/Flash cards.iml" filepath="$PROJECT_DIR$/Flash cards.iml" group="Flash cards" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="Flash cards/app" />
     </modules>
   </component>

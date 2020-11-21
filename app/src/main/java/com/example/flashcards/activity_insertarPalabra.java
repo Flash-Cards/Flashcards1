@@ -34,7 +34,7 @@ import java.util.List;
 
 public class activity_insertarPalabra extends AppCompatActivity {
     EditText etpalabra;
-    Button binsertar, bseleccionarimagen, boton_grabar, boton_reproducir, boton_detenerg, boton_detenerr;
+    Button binsertar, bseleccionarimagen, boton_grabar, boton_reproducir, boton_detenerg, boton_detenerr, boton_salir;
     ImageView Vimagen;
 
     private static final int PICK_IMAGE_REQUEST=100;
@@ -78,13 +78,20 @@ public class activity_insertarPalabra extends AppCompatActivity {
         boton_detenerr = findViewById(R.id.boton_detenerr);
         bseleccionarimagen = findViewById(R.id.bseleccionarimagen);
         Vimagen = findViewById(R.id.Vimagen);
+        boton_salir = findViewById(R.id.btn_salir);
 
         fileName = null;
 
 
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
-
+        boton_salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), activity_antesComenzar.class);
+                startActivity(intent);
+            }
+        });
 
         binsertar.setOnClickListener(new View.OnClickListener() {
             @Override

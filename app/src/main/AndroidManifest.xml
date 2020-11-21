@@ -3,8 +3,8 @@
     package="com.example.flashcards">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,19 +13,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Preguntas"  android:screenOrientation="landscape"></activity>
-        <activity android:name=".activity_seleccionarempezar"   android:screenOrientation="landscape"/>
-        <activity android:name=".activity_flashcard"  android:screenOrientation="landscape"/>
-        <activity android:name=".Borrar_palabras"  android:screenOrientation="landscape"/>
+        <activity android:name=".activity_info"
+            android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".Preguntas"
+            android:noHistory="true"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity_seleccionarempezar"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity_flashcard"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Borrar_palabras"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Lista_palabras"
             android:label="@string/title_activity_lista_palabras"
-            android:theme="@style/AppTheme.NoActionBar"  android:screenOrientation="landscape"/>
-        <activity android:name=".activity_insertarPalabra" android:screenOrientation="landscape" />
-        <activity android:name=".activity_antesComenzar" android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity_insertarPalabra"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity_antesComenzar"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,8 +23,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Preguntas extends AppCompatActivity {
-
-    Button bpregunta, bopcion1, bopcion2, bopcion3, bopcion4;
+    private Handler mhandler = new Handler();
+    Button bpregunta, bopcion1, bopcion2, bopcion3, bopcion4,bsalir;
 
     String pathsito;
     Random opciones= new Random();
@@ -29,6 +32,9 @@ public class Preguntas extends AppCompatActivity {
 
     private static final String LOG_TAG = "AudioRecordTest";
     private MediaPlayer player = null;
+    final ArrayList<String> listapalabras = new ArrayList<>();
+    final ArrayList<String> listapathsito = new ArrayList<>();
+    String respuesta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +46,16 @@ public class Preguntas extends AppCompatActivity {
         bopcion2 = (Button) findViewById(R.id.bopcion2);
         bopcion3 = (Button) findViewById(R.id.bopcion3);
         bopcion4 = (Button) findViewById(R.id.bopcion4);
+        bsalir = findViewById(R.id.btn_salir);
+
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //proceso preguntas
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 1);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
 
         Cursor fila = BaseDeDatabase.rawQuery("select palabra, audio from palabras ", null);
-        final ArrayList<String> listapalabras = new ArrayList<>();
-        final ArrayList<String> listapathsito = new ArrayList<>();
+
 
         if (fila.moveToFirst()) {
             if (fila.moveToFirst()) {
@@ -108,20 +116,38 @@ public class Preguntas extends AppCompatActivity {
         });
 
 
+        respuesta = listapalabras.get(pregunta).toString();
 
-        final String respuesta = listapalabras.get(pregunta).toString();
+
+        bsalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), activity_antesComenzar.class);
+                startActivity(intent);
+            }
+        });
+
         bopcion1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (bopcion1.getText() == respuesta){
-                    bopcion1.setBackgroundColor(Color.parseColor("#18FF1F"));
+                    bopcion1.setBackgroundResource(R.drawable.green);
+                    bopcion1.setTextColor(Color.parseColor("#ffffff"));
+                    player.stop();
+                    player.reset();
+                    player.release();
+                    player = null;
+                    Intent intent = new Intent(v.getContext(), Preguntas.class);
+                    intent.setFlags(intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(intent);
+                    finish();
 
                 }else{
-                    bopcion1.setBackgroundColor(Color.parseColor("#FF1919"));
+                    bopcion1.setBackgroundResource(R.drawable.red);
+                    bopcion1.setTextColor(Color.parseColor("#ffffff"));
                 }
+                //bopcion1.setBackgroundColor(Color.parseColor("#000000"));
 
-                Intent intent = new Intent(v.getContext(), Preguntas.class);
-                startActivityForResult(intent, 0);
             }
         });
 
@@ -129,13 +155,22 @@ public class Preguntas extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (bopcion2.getText() == respuesta){
-                    bopcion2.setBackgroundColor(Color.parseColor("#18FF1F"));
+                    bopcion2.setBackgroundResource(R.drawable.green);
+                    bopcion2.setTextColor(Color.parseColor("#ffffff"));
+                    player.stop();
+                    player.reset();
+                    player.release();
+                    player = null;
+                    Intent intent = new Intent(v.getContext(), Preguntas.class);
+                    intent.setFlags(intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(intent);
+                    finish();
 
                 }else{
-                    bopcion2.setBackgroundColor(Color.parseColor("#FF1919"));
+                    bopcion2.setBackgroundResource(R.drawable.red);
+                    bopcion2.setTextColor(Color.parseColor("#ffffff"));
                 }
-                Intent intent = new Intent(v.getContext(), Preguntas.class);
-                startActivityForResult(intent, 0);
+                //bopcion2.setBackgroundColor(Color.parseColor("#000000"));
             }
         });
 
@@ -143,14 +178,23 @@ public class Preguntas extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (bopcion3.getText() == respuesta){
-                    bopcion3.setBackgroundColor(Color.parseColor("#18FF1F"));
+                    bopcion3.setBackgroundResource(R.drawable.green);
+                    bopcion3.setTextColor(Color.parseColor("#ffffff"));
+                    player.stop();
+                    player.reset();
+                    player.release();
+                    player = null;
+                    Intent intent = new Intent(v.getContext(), Preguntas.class);
+                    intent.setFlags(intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(intent);
+                    finish();
 
                 }else{
-                    bopcion3.setBackgroundColor(Color.parseColor("#FF1919"));
+                    bopcion3.setBackgroundResource(R.drawable.red);
+                    bopcion3.setTextColor(Color.parseColor("#ffffff"));
                 }
+                //bopcion3.setBackgroundColor(Color.parseColor("#000000"));
 
-                Intent intent = new Intent(v.getContext(), Preguntas.class);
-                startActivityForResult(intent, 0);
             }
         });
 
@@ -158,19 +202,37 @@ public class Preguntas extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (bopcion4.getText() == respuesta){
-                    bopcion4.setBackgroundColor(Color.parseColor("#18FF1F"));
+                    bopcion4.setBackgroundResource(R.drawable.green);
+                    bopcion4.setTextColor(Color.parseColor("#ffffff"));
+                    player.stop();
+                    player.reset();
+                    player.release();
+                    player = null;
+                    Intent intent = new Intent(v.getContext(), Preguntas.class);
+                    intent.setFlags(intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(intent);
+                    finish();
 
                 }else{
-                    bopcion4.setBackgroundColor(Color.parseColor("#FF1919"));
+                    bopcion4.setBackgroundResource(R.drawable.red);
+                    bopcion4.setTextColor(Color.parseColor("#ffffff"));
                 }
+                //bopcion4.setBackgroundColor(Color.parseColor("#000000"));
 
-                Intent intent = new Intent(v.getContext(), Preguntas.class);
-                startActivityForResult(intent, 0);
             }
         });
     }
 
+
+    public void onDestroy() {
+        super.onDestroy();
+
     }
+
+
+
+
+}
 /*
     private void mPalabra() {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 1);

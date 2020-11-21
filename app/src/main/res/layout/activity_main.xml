@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:background="@drawable/degradadohor"
     tools:context=".MainActivity">
 
     <TextView
@@ -36,14 +37,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Comenzar"
-        android:textStyle="bold"
+        android:textAllCaps="false"
         android:textSize="25dp"
-        android:textColor="#ffffff"
+        android:textColor="#fff"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:background="@drawable/radiusborder"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="285dp">
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
 
     </Button>
 

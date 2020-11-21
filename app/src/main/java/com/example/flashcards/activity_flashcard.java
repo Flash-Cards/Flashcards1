@@ -40,9 +40,9 @@ public class activity_flashcard extends AppCompatActivity {
         setContentView(R.layout.activity_flashcard);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        bpreguntas=(Button) findViewById(R.id.bpreguntas);
+        bpreguntas= findViewById(R.id.bpreguntas);
 
-        tflash = (TextView) findViewById(R.id.tflash);
+        tflash = findViewById(R.id.tflash);
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 1);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
          //consulta
@@ -82,7 +82,7 @@ public class activity_flashcard extends AppCompatActivity {
        mhandler.postDelayed(mcicloflashcards,1500);
     }
 
-    private Runnable cambiar=new Runnable() {
+    private Runnable cambiar = new Runnable() {
         @Override
         public void run() {
             if (i<carreglo){

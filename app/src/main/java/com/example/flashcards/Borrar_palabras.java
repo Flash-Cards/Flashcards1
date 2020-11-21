@@ -22,11 +22,14 @@ public class Borrar_palabras extends AppCompatActivity {
 
    ListView lv1;
 
+   Button boton_salir;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrar_palabras);
         lv1=(ListView) findViewById(R.id.lv1);
+        boton_salir = findViewById(R.id.btn_salir);
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -39,6 +42,14 @@ public class Borrar_palabras extends AppCompatActivity {
 
             }
 
+        });
+
+        boton_salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), activity_antesComenzar.class);
+                startActivity(intent);
+            }
         });
 
     }

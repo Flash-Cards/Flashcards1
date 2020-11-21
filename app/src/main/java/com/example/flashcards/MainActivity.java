@@ -13,6 +13,12 @@ public class MainActivity extends AppCompatActivity {
     Button bcomenzar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Quitamos barra de notificaciones

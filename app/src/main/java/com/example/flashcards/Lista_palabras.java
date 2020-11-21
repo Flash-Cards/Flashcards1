@@ -1,5 +1,6 @@
 package com.example.flashcards;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,13 +24,23 @@ import java.util.List;
 
 public class Lista_palabras extends AppCompatActivity {
     ListView lv1;
+    Button boton_salir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_palabras);
         lv1=(ListView)findViewById(R.id.lv1);
+        boton_salir = findViewById(R.id.btn_salir);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        boton_salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), activity_antesComenzar.class);
+                startActivity(intent);
+            }
+        });
 
 
             AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,1);
