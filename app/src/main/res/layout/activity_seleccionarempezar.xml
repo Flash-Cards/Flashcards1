@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/degradadohor"
     android:orientation="horizontal"
     tools:context=".Lista_palabras">
 
@@ -16,7 +17,7 @@
         android:textSize="24sp"
         android:textAlignment="center"
         android:layout_marginTop="15dp"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:gravity="center_horizontal">
 
     </TextView>

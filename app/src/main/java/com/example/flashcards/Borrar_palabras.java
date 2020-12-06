@@ -38,7 +38,7 @@ public class Borrar_palabras extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                eliminar(parent.getItemAtPosition(position).toString());
+                mostrarActmodificar(parent.getItemAtPosition(position).toString());
 
             }
 
@@ -81,6 +81,11 @@ public class Borrar_palabras extends AppCompatActivity {
 
     }
 
+    public void mostrarActmodificar(String pa){
+        Intent intent = new Intent(this,activity_modificarBorrar.class);
+        intent.putExtra("palabra",pa);
+        startActivity(intent);
+    }
 
 
     public void eliminar(String pa){
