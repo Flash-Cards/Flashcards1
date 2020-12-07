@@ -2,10 +2,12 @@ package com.example.flashcards;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -31,7 +33,7 @@ import java.io.IOException;
 public class activity_modificarBorrar extends AppCompatActivity {
     EditText etpalabra;
     ImageView Vimagen;
-    Button boton_reproducir,boton_grabar,boton_detenerg,boton_detenerr,bseleccionarimagen,binsertar;
+    Button boton_reproducir,boton_grabar,boton_detenerg,boton_detenerr,bseleccionarimagen,binsertar,beliminar;
     private static final String LOG_TAG = "AudioRecordTest";
     private MediaPlayer player = null;
     String pathaudio;
@@ -74,6 +76,7 @@ public class activity_modificarBorrar extends AppCompatActivity {
         boton_detenerr = findViewById(R.id.boton_detenerr);
         bseleccionarimagen = findViewById(R.id.bseleccionarimagen);
         binsertar= findViewById(R.id.binsertar);
+        beliminar= findViewById(R.id.beliminar);
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -174,7 +177,34 @@ public class activity_modificarBorrar extends AppCompatActivity {
 
             }
         });
+
+        beliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alerta = new AlertDialog.Builder(activity_modificarBorrar.this);
+                alerta.setMessage("¿Desea eliminar la palabra?")
+                        .setCancelable(false)
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                eliminar(mpalabra);
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        });
+
+                AlertDialog titulo = alerta.create();
+                titulo.setTitle("Aviso");
+                titulo.show();
+
+            }
+        });
     }
+
 
 
 
