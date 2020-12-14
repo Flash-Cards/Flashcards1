@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/fondoo"
+    tools:context=".activity_flashcard">
+
+    <Button
+        android:id="@+id/bpreguntas"
+        android:layout_width="120dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/lightblue"
+        android:text="Preguntas"
+        android:textColor="#ffffff"
+        android:textSize="17dp"
+        android:textStyle="bold">
+
+    </Button>
+
+    <TextView
+        android:id="@+id/tflash"
+        android:layout_width="match_parent"
+        android:layout_height="217dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center_horizontal"
+        android:paddingTop="50dp"
+        android:text=""
+        android:textSize="60dp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textStyle="bold">
+
+    </TextView>
+
+
+
+</RelativeLayout>

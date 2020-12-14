@@ -51,16 +51,16 @@
         android:textColor="#000"
         android:background="@drawable/white"
         android:textSize="20sp"
-        android:layout_marginTop="170dp"
-        android:layout_marginLeft="50dp">
+        android:layout_marginTop="190dp"
+        android:layout_marginLeft="90dp">
     </Button>
 
     <Button
         android:id="@+id/bopcion2"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="350dp"
-        android:layout_marginTop="170dp"
+        android:layout_marginLeft="400dp"
+        android:layout_marginTop="190dp"
         android:background="@drawable/white"
         android:text="afsdf"
         android:textColor="#000"
@@ -76,8 +76,8 @@
         android:textColor="#000"
         android:background="@drawable/white"
         android:textSize="20sp"
-        android:layout_marginTop="250dp"
-        android:layout_marginLeft="50dp">
+        android:layout_marginTop="280dp"
+        android:layout_marginLeft="90dp">
 
     </Button>
 
@@ -89,8 +89,8 @@
         android:textColor="#000"
         android:background="@drawable/white"
         android:textSize="20sp"
-        android:layout_marginTop="250dp"
-        android:layout_marginLeft="350dp">
+        android:layout_marginTop="280dp"
+        android:layout_marginLeft="400dp">
 
     </Button>
 

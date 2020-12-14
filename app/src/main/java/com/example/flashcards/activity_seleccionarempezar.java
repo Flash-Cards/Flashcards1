@@ -70,9 +70,6 @@ public class activity_seleccionarempezar extends AppCompatActivity {
 
                 ModificarSeleccion(parent.getItemAtPosition(position).toString());
 
-
-
-
             }
 
         });
