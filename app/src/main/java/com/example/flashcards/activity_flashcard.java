@@ -62,7 +62,7 @@ public class activity_flashcard extends AppCompatActivity {
             } while (fila.moveToNext());
             BaseDeDatabase.close();
             int npalabras=listapalabras.size();
-            carreglo=npalabras;
+            carreglo=npalabras-1;
         } else {
             Toast.makeText(this, "No se encuentran palabras", Toast.LENGTH_SHORT).show();
         }
@@ -75,7 +75,7 @@ public class activity_flashcard extends AppCompatActivity {
             }
         });
 
-       mhandler.postDelayed(mcicloflashcards,1500);
+       cicloflashcards();
     }
 
     private Runnable cambiar = new Runnable() {
@@ -83,22 +83,16 @@ public class activity_flashcard extends AppCompatActivity {
         public void run() {
             if (i<carreglo){
                 i++;
-                mhandler.postDelayed(mcicloflashcards,1000);
+                cicloflashcards();
             }
-            if(i>=carreglo) {
-                i = 0;
-                mhandler.postDelayed(mcicloflashcards, 1000);
-            }
+
 
         }
 
 
     };
 
-    private Runnable mcicloflashcards=new Runnable(){
-
-        @Override
-        public void run() {
+    public void cicloflashcards(){
                 int canpalabra = listapalabras.get(i).toString().length();
                 int tamtexto,t,tamletra=100;
                 if(canpalabra > 7){
@@ -111,10 +105,12 @@ public class activity_flashcard extends AppCompatActivity {
                     tflash.setTextSize(tamletra);
                 }
                 tflash.setText(listapalabras.get(i).toString());
-
+                if(i>=carreglo) {
+                i = -1;
+        }
                 mhandler.postDelayed(cambiar,mTiempoEnMilis2);
         }
-    };
+
 
     public void establecerTiempo(long milisegundos) {
         mTiempoEnMilis2 = milisegundos;
