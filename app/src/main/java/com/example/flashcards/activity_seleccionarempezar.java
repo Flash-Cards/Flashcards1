@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class activity_seleccionarempezar extends AppCompatActivity {
 
-    Button bcomenzar,mButton1;
+    Button bcomenzar,mButton1,boton_salir;
     ListView lv1;
 
     public EditText mEditTextNum;
@@ -37,6 +37,7 @@ public class activity_seleccionarempezar extends AppCompatActivity {
         mEditTextNum = findViewById(R.id.texto_editar);
         mTextViewNum = findViewById(R.id.tiempo_muestra);
         mButton1 = findViewById(R.id.set_text);
+        boton_salir = findViewById(R.id.btn_salir);
 
         bcomenzar = (Button) findViewById(R.id.bcomenzar);
         lv1 = (ListView) findViewById(R.id.lv1);
@@ -48,17 +49,11 @@ public class activity_seleccionarempezar extends AppCompatActivity {
         Cursor fila = BaseDeDatabase.rawQuery("select palabra from palabras", null);
         ArrayList<String> listapalabras = new ArrayList<>();
         if (fila.moveToFirst()) {
-
             do {
                 listapalabras.add(fila.getString(0));
-
             } while (fila.moveToNext());
-
-
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_palabras, listapalabras);
             lv1.setAdapter(adapter);
-
-
             BaseDeDatabase.close();
         } else {
             Toast.makeText(this, "No se encuentran palabras", Toast.LENGTH_SHORT).show();
@@ -67,9 +62,7 @@ public class activity_seleccionarempezar extends AppCompatActivity {
         lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 ModificarSeleccion(parent.getItemAtPosition(position).toString());
-
             }
 
         });
@@ -97,6 +90,14 @@ public class activity_seleccionarempezar extends AppCompatActivity {
         mButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            }
+        });
+
+        boton_salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), activity_antesComenzar.class);
+                startActivity(intent);
             }
         });
 

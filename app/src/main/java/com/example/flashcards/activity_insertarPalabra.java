@@ -96,11 +96,10 @@ public class activity_insertarPalabra extends AppCompatActivity {
         binsertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                palabra= etpalabra.getText().toString();
+                palabra = etpalabra.getText().toString();
                 if (!palabra.isEmpty() && fileName != null && Imagepath != null){
                     Insertar();
                 }else{
-
                     Toast.makeText(activity_insertarPalabra.this, "Debe llenar todos los campos", Toast.LENGTH_SHORT).show();
                 }
 
@@ -218,7 +217,6 @@ public class activity_insertarPalabra extends AppCompatActivity {
         }catch (Exception e){
             Toast.makeText(this,e.getMessage(),Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private void Insertar() {

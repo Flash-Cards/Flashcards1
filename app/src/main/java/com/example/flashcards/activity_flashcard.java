@@ -41,8 +41,8 @@ public class activity_flashcard extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         bpreguntas= findViewById(R.id.bpreguntas);
-
         tflash = findViewById(R.id.tflash);
+
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 1);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
          //consulta
@@ -57,18 +57,14 @@ public class activity_flashcard extends AppCompatActivity {
         establecerTiempo(milisentrada);
 
         if (fila.moveToFirst()) {
-
             do {
                 listapalabras.add(fila.getString(0));
-
             } while (fila.moveToNext());
-
             BaseDeDatabase.close();
             int npalabras=listapalabras.size();
             carreglo=npalabras;
         } else {
             Toast.makeText(this, "No se encuentran palabras", Toast.LENGTH_SHORT).show();
-
         }
        //fin consulta
         bpreguntas.setOnClickListener(new View.OnClickListener() {

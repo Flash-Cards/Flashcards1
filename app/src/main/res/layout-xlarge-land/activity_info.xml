@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_info">
+
+    <ImageView
+        android:id="@+id/logotec"
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:src="@drawable/logostecnm" />
+
+    <TextView
+        android:id="@+id/linea1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Esta aplicación fue creada específicamente con fines de investigación."
+        android:layout_below="@+id/logotec"
+        android:layout_marginTop="100dp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="29dp"
+        android:gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/linea2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fue desarrollada por estudiantes del Tecnológico Nacional de México campus Matamoros."
+        android:layout_below="@+id/linea1"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:textSize="29dp"
+        android:gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/linea3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Este trabajo está bajo la licencia Atribución-NoComercial-SinDerivadas 4.0 Internacional (CC BY-NC-ND 4.0)."
+        android:layout_marginTop="75dp"
+        android:textColor="#000"
+        android:textSize="25dp"
+        android:layout_below="@+id/linea2"
+        android:gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/linea4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Para ver una copia de esta licencia, visite: https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es"
+        android:textColor="#000"
+        android:textSize="25dp"
+        android:layout_below="@+id/linea3"
+        android:gravity="center_horizontal"/>
+
+    <ImageView
+        android:layout_width="174dp"
+        android:layout_height="62dp"
+        android:layout_below="@+id/linea4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:src="@drawable/lice" />
+
+</RelativeLayout>
