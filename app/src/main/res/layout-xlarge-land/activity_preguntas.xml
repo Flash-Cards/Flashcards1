@@ -30,6 +30,7 @@
         android:layout_marginTop="7dp"/>
 
     <ImageView
+        android:id="@+id/imagen"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"

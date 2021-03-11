@@ -85,8 +85,6 @@ public class activity_flashcard extends AppCompatActivity {
                 i++;
                 cicloflashcards();
             }
-
-
         }
 
 

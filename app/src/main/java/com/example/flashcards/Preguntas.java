@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -16,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -25,8 +29,9 @@ import java.util.Random;
 public class Preguntas extends AppCompatActivity {
     private Handler mhandler = new Handler();
     Button bpregunta, bopcion1, bopcion2, bopcion3, bopcion4,bsalir;
-
+    ImageView imagen;
     String pathsito;
+    byte [] imageBytes;
     Random opciones= new Random();
     int opcion1, opcion2, opcion3, opcion4;
 
@@ -34,6 +39,7 @@ public class Preguntas extends AppCompatActivity {
     private MediaPlayer player = null;
     final ArrayList<String> listapalabras = new ArrayList<>();
     final ArrayList<String> listapathsito = new ArrayList<>();
+    final ArrayList<Bitmap> imagenes = new ArrayList<>();
     String respuesta;
 
     @Override
@@ -47,6 +53,7 @@ public class Preguntas extends AppCompatActivity {
         bopcion3 = (Button) findViewById(R.id.bopcion3);
         bopcion4 = (Button) findViewById(R.id.bopcion4);
         bsalir = findViewById(R.id.btn_salir);
+        imagen = (ImageView) findViewById(R.id.imagen);
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -54,7 +61,7 @@ public class Preguntas extends AppCompatActivity {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 1);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
 
-        Cursor fila = BaseDeDatabase.rawQuery("select palabra, audio from palabras ", null);
+        Cursor fila = BaseDeDatabase.rawQuery("select palabra, audio, imagen from palabras where seleccion=1", null);
 
 
         if (fila.moveToFirst()) {
@@ -62,10 +69,10 @@ public class Preguntas extends AppCompatActivity {
                 do {
                     listapalabras.add(fila.getString(0));
                     listapathsito.add(fila.getString(1));
+                    imageBytes = fila.getBlob(2);
+                    Bitmap objectBitmap = BitmapFactory.decodeByteArray(imageBytes,0, imageBytes.length);
+                    imagenes.add(objectBitmap);
                 } while (fila.moveToNext());
-
-
-
                 BaseDeDatabase.close();
             } else {
                 Toast.makeText(this, "No se encuentran palabras", Toast.LENGTH_SHORT).show();
@@ -75,7 +82,7 @@ public class Preguntas extends AppCompatActivity {
         int npalabras=listapalabras.size();
 
 
-        int pregunta=opciones.nextInt(npalabras);
+        final int pregunta=opciones.nextInt(npalabras);
         int i = 0;
 
         if (i < npalabras){
@@ -137,16 +144,15 @@ public class Preguntas extends AppCompatActivity {
                     player.reset();
                     player.release();
                     player = null;
-                    Intent intent = new Intent(v.getContext(), Preguntas.class);
-                    intent.setFlags(intent.FLAG_ACTIVITY_NO_HISTORY);
-                    startActivity(intent);
-                    finish();
+                    imagen.setImageBitmap(imagenes.get(pregunta));
+
 
                 }else{
                     bopcion1.setBackgroundResource(R.drawable.red);
                     bopcion1.setTextColor(Color.parseColor("#ffffff"));
                 }
                 //bopcion1.setBackgroundColor(Color.parseColor("#000000"));
+                mhandler.postDelayed(siguiente,2000);
 
             }
         });
@@ -161,16 +167,14 @@ public class Preguntas extends AppCompatActivity {
                     player.reset();
                     player.release();
                     player = null;
-                    Intent intent = new Intent(v.getContext(), Preguntas.class);
-                    intent.setFlags(intent.FLAG_ACTIVITY_NO_HISTORY);
-                    startActivity(intent);
-                    finish();
+                    imagen.setImageBitmap(imagenes.get(pregunta));
 
                 }else{
                     bopcion2.setBackgroundResource(R.drawable.red);
                     bopcion2.setTextColor(Color.parseColor("#ffffff"));
                 }
                 //bopcion2.setBackgroundColor(Color.parseColor("#000000"));
+                mhandler.postDelayed(siguiente,2000);
             }
         });
 
@@ -184,16 +188,15 @@ public class Preguntas extends AppCompatActivity {
                     player.reset();
                     player.release();
                     player = null;
-                    Intent intent = new Intent(v.getContext(), Preguntas.class);
-                    intent.setFlags(intent.FLAG_ACTIVITY_NO_HISTORY);
-                    startActivity(intent);
-                    finish();
+                    imagen.setImageBitmap(imagenes.get(pregunta));
+
 
                 }else{
                     bopcion3.setBackgroundResource(R.drawable.red);
                     bopcion3.setTextColor(Color.parseColor("#ffffff"));
                 }
                 //bopcion3.setBackgroundColor(Color.parseColor("#000000"));
+                mhandler.postDelayed(siguiente,2000);
 
             }
         });
@@ -208,25 +211,34 @@ public class Preguntas extends AppCompatActivity {
                     player.reset();
                     player.release();
                     player = null;
-                    Intent intent = new Intent(v.getContext(), Preguntas.class);
-                    intent.setFlags(intent.FLAG_ACTIVITY_NO_HISTORY);
-                    startActivity(intent);
-                    finish();
+                    imagen.setImageBitmap(imagenes.get(pregunta));
+
 
                 }else{
                     bopcion4.setBackgroundResource(R.drawable.red);
                     bopcion4.setTextColor(Color.parseColor("#ffffff"));
                 }
                 //bopcion4.setBackgroundColor(Color.parseColor("#000000"));
+                mhandler.postDelayed(siguiente,2000);
 
             }
         });
     }
 
+    private Runnable siguiente = new Runnable() {
+        @Override
+        public void run() {
+            Intent intent = new Intent(getBaseContext(), Preguntas.class);
+            startActivity(intent);
+            finish();
+        }
+    };
 
     public void onDestroy() {
         super.onDestroy();
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            finishAndRemoveTask();
+        }
     }
 
 

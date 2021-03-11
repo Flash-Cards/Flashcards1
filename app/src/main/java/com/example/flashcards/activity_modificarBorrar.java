@@ -33,7 +33,7 @@ import java.io.IOException;
 public class activity_modificarBorrar extends AppCompatActivity {
     EditText etpalabra;
     ImageView Vimagen;
-    Button boton_reproducir,boton_grabar,boton_detenerg,boton_detenerr,bseleccionarimagen,binsertar,beliminar;
+    Button boton_reproducir,boton_grabar,boton_detenerg,boton_detenerr,bseleccionarimagen,binsertar,beliminar,boton_salir;
     private static final String LOG_TAG = "AudioRecordTest";
     private MediaPlayer player = null;
     String pathaudio;
@@ -77,6 +77,7 @@ public class activity_modificarBorrar extends AppCompatActivity {
         bseleccionarimagen = findViewById(R.id.bseleccionarimagen);
         binsertar= findViewById(R.id.binsertar);
         beliminar= findViewById(R.id.beliminar);
+        boton_salir = findViewById(R.id.btn_salir);
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -201,6 +202,14 @@ public class activity_modificarBorrar extends AppCompatActivity {
                 titulo.setTitle("Aviso");
                 titulo.show();
 
+            }
+        });
+
+        boton_salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(),activity_antesComenzar.class);
+                startActivity(intent);
             }
         });
     }
