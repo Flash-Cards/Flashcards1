@@ -95,7 +95,7 @@ public class Preguntas extends AppCompatActivity {
                 opcion3 = opciones.nextInt(npalabras);
                 opcion4 = opciones.nextInt(npalabras);
 
-                if ((opcion1 == pregunta || opcion2 == pregunta || opcion3 == pregunta || opcion4 == pregunta) && (opcion1!=opcion2  && opcion2!=opcion3 && opcion3!=opcion4 && opcion4 != opcion1)) {
+                if ((opcion1 == pregunta || opcion2 == pregunta || opcion3 == pregunta || opcion4 == pregunta) && (opcion1!=opcion2  && opcion1!=opcion3 && opcion2!=opcion3 && opcion3!=opcion4 && opcion4 != opcion1 && opcion4!=opcion2)) {
                     bopcion1.setText(listapalabras.get(opcion1).toString());
                     bopcion2.setText(listapalabras.get(opcion2).toString());
                     bopcion3.setText(listapalabras.get(opcion3).toString());
