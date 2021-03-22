@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/fondoo"
+    tools:context=".activity_flashcard">
+
+    <Button
+        android:id="@+id/bpreguntas"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginLeft="450dp"
+        android:background="@drawable/lightblue"
+        android:text="Preguntas"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:textStyle="bold">
+    </Button>
+
+    <ImageView
+        android:id="@+id/imagen"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/tflash"
+        android:layout_width="match_parent"
+        android:layout_height="217dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center_horizontal"
+        android:paddingTop="50dp"
+        android:text=""
+        android:textSize="100dp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textStyle="bold">
+
+    </TextView>
+
+
+
+</RelativeLayout>

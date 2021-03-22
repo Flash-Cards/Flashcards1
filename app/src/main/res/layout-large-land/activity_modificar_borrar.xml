@@ -59,8 +59,7 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:hint="Palabra"
-                android:textAlignment="center"
-                android:background="@drawable/custom_input">
+                android:textAlignment="center">
             </EditText>
 
             <TextView

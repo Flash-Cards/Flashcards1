@@ -13,7 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity_modificarBorrar"></activity>
+        <activity android:name=".activity_seleccionarImagenes"
+            android:screenOrientation="landscape"></activity>
+        <activity android:name=".activity_cicloImagenes"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".activity_imagenes" />
+        <activity
+            android:name=".activity_modificarBorrar"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity_info"
             android:screenOrientation="landscape" />

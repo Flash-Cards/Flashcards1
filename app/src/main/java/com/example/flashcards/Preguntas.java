@@ -76,7 +76,6 @@ public class Preguntas extends AppCompatActivity {
                 BaseDeDatabase.close();
             } else {
                 Toast.makeText(this, "No se encuentran palabras", Toast.LENGTH_SHORT).show();
-
             }
         }
         int npalabras=listapalabras.size();
