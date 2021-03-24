@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -121,9 +122,7 @@ public class Preguntas extends AppCompatActivity {
             }
         });
 
-
         respuesta = listapalabras.get(pregunta).toString();
-
 
         bsalir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,25 +132,35 @@ public class Preguntas extends AppCompatActivity {
             }
         });
 
+        final MediaPlayer player2 = MediaPlayer.create(this, Uri.parse(pathsito));
+
         bopcion1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (bopcion1.getText() == respuesta){
                     bopcion1.setBackgroundResource(R.drawable.green);
                     bopcion1.setTextColor(Color.parseColor("#ffffff"));
+                    player2.start();
                     player.stop();
                     player.reset();
                     player.release();
                     player = null;
                     imagen.setImageBitmap(imagenes.get(pregunta));
-
+                    bopcion1.setEnabled(false);
+                    bopcion2.setEnabled(false);
+                    bopcion3.setEnabled(false);
+                    bopcion4.setEnabled(false);
 
                 }else{
                     bopcion1.setBackgroundResource(R.drawable.red);
                     bopcion1.setTextColor(Color.parseColor("#ffffff"));
+                    bopcion1.setEnabled(false);
+                    bopcion2.setEnabled(false);
+                    bopcion3.setEnabled(false);
+                    bopcion4.setEnabled(false);
                 }
                 //bopcion1.setBackgroundColor(Color.parseColor("#000000"));
-                mhandler.postDelayed(siguiente,2000);
+                mhandler.postDelayed(siguiente,4000);
 
             }
         });
@@ -162,18 +171,27 @@ public class Preguntas extends AppCompatActivity {
                 if (bopcion2.getText() == respuesta){
                     bopcion2.setBackgroundResource(R.drawable.green);
                     bopcion2.setTextColor(Color.parseColor("#ffffff"));
+                    player2.start();
                     player.stop();
                     player.reset();
                     player.release();
                     player = null;
                     imagen.setImageBitmap(imagenes.get(pregunta));
+                    bopcion1.setEnabled(false);
+                    bopcion2.setEnabled(false);
+                    bopcion3.setEnabled(false);
+                    bopcion4.setEnabled(false);
 
                 }else{
                     bopcion2.setBackgroundResource(R.drawable.red);
                     bopcion2.setTextColor(Color.parseColor("#ffffff"));
+                    bopcion1.setEnabled(false);
+                    bopcion2.setEnabled(false);
+                    bopcion3.setEnabled(false);
+                    bopcion4.setEnabled(false);
                 }
                 //bopcion2.setBackgroundColor(Color.parseColor("#000000"));
-                mhandler.postDelayed(siguiente,2000);
+                mhandler.postDelayed(siguiente,4000);
             }
         });
 
@@ -183,19 +201,27 @@ public class Preguntas extends AppCompatActivity {
                 if (bopcion3.getText() == respuesta){
                     bopcion3.setBackgroundResource(R.drawable.green);
                     bopcion3.setTextColor(Color.parseColor("#ffffff"));
+                    player2.start();
                     player.stop();
                     player.reset();
                     player.release();
                     player = null;
                     imagen.setImageBitmap(imagenes.get(pregunta));
-
+                    bopcion1.setEnabled(false);
+                    bopcion2.setEnabled(false);
+                    bopcion3.setEnabled(false);
+                    bopcion4.setEnabled(false);
 
                 }else{
                     bopcion3.setBackgroundResource(R.drawable.red);
                     bopcion3.setTextColor(Color.parseColor("#ffffff"));
+                    bopcion1.setEnabled(false);
+                    bopcion2.setEnabled(false);
+                    bopcion3.setEnabled(false);
+                    bopcion4.setEnabled(false);
                 }
                 //bopcion3.setBackgroundColor(Color.parseColor("#000000"));
-                mhandler.postDelayed(siguiente,2000);
+                mhandler.postDelayed(siguiente,4000);
 
             }
         });
@@ -206,23 +232,31 @@ public class Preguntas extends AppCompatActivity {
                 if (bopcion4.getText() == respuesta){
                     bopcion4.setBackgroundResource(R.drawable.green);
                     bopcion4.setTextColor(Color.parseColor("#ffffff"));
+                    player2.start();
                     player.stop();
                     player.reset();
                     player.release();
                     player = null;
                     imagen.setImageBitmap(imagenes.get(pregunta));
-
-
+                    bopcion1.setEnabled(false);
+                    bopcion2.setEnabled(false);
+                    bopcion3.setEnabled(false);
+                    bopcion4.setEnabled(false);
                 }else{
                     bopcion4.setBackgroundResource(R.drawable.red);
                     bopcion4.setTextColor(Color.parseColor("#ffffff"));
+                    bopcion1.setEnabled(false);
+                    bopcion2.setEnabled(false);
+                    bopcion3.setEnabled(false);
+                    bopcion4.setEnabled(false);
                 }
                 //bopcion4.setBackgroundColor(Color.parseColor("#000000"));
-                mhandler.postDelayed(siguiente,2000);
+                mhandler.postDelayed(siguiente,4000);
 
             }
         });
     }
+
 
     private Runnable siguiente = new Runnable() {
         @Override
