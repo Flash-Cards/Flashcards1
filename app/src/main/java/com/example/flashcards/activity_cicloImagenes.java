@@ -46,7 +46,7 @@ public class activity_cicloImagenes extends AppCompatActivity {
         bpreguntas= findViewById(R.id.bpreguntas);
         imagen= findViewById(R.id.imagen);
 
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 2);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
         //consulta
         Cursor fila = BaseDeDatabase.rawQuery("select imagen from palabras where seleccion = 1", null);
@@ -74,7 +74,7 @@ public class activity_cicloImagenes extends AppCompatActivity {
         bpreguntas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), Preguntas.class);
+                Intent intent = new Intent(v.getContext(), PreguntasAudio.class);
                 startActivity(intent);
             }
         });

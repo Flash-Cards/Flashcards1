@@ -56,7 +56,7 @@ public class Borrar_palabras extends AppCompatActivity {
 
 
     public void consulta(){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,2);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
 
         Cursor fila = BaseDeDatabase.rawQuery("select * from palabras",null);
@@ -89,7 +89,7 @@ public class Borrar_palabras extends AppCompatActivity {
 
 
     public void eliminar(String pa){
-      AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,1);
+      AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,2);
          SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
 
             int cant = BaseDeDatabase.delete("palabras", "palabra='" + pa+"'", null);

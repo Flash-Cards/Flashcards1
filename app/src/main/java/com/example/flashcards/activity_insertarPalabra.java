@@ -220,19 +220,13 @@ public class activity_insertarPalabra extends AppCompatActivity {
     }
 
     private void Insertar() {
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,2);
         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
         Bitmap imageToStoreBitmap = imageToStore;
-
         objectByteArrayOutputStream = new ByteArrayOutputStream();
         imageToStoreBitmap.compress(Bitmap.CompressFormat.JPEG,100,objectByteArrayOutputStream);
-
         imageInBytes=objectByteArrayOutputStream.toByteArray();
-
-
-
-
 
         if (!palabra.isEmpty() && !fileName.isEmpty() && Imagepath != null){
             ContentValues registro= new ContentValues();

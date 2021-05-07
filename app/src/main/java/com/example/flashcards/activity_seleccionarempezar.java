@@ -43,7 +43,7 @@ public class activity_seleccionarempezar extends AppCompatActivity {
         lv1 = (ListView) findViewById(R.id.lv1);
 
         cantidad=0;
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 2);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
 
         Cursor fila = BaseDeDatabase.rawQuery("select palabra from palabras", null);
@@ -104,7 +104,7 @@ public class activity_seleccionarempezar extends AppCompatActivity {
     }
 
     public void ModificarSeleccion(String Pselect){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 2);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
 
         ContentValues registro = new ContentValues();
@@ -122,7 +122,7 @@ public class activity_seleccionarempezar extends AppCompatActivity {
 
 
     public void Deseleccionarpalabra(){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 2);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
 
         ContentValues registro = new ContentValues();

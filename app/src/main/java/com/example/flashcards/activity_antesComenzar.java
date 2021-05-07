@@ -22,14 +22,14 @@ public class activity_antesComenzar extends AppCompatActivity implements View.On
         insertpablabra = (CardView) findViewById(R.id.btn_agregar);
         bconsultar = (CardView) findViewById(R.id.btn_flashcards);
         bborrar = (CardView) findViewById(R.id.btn_borrar);
-        bempezar = (CardView) findViewById(R.id.btn_palabras);
+        //bempezar = (CardView) findViewById(R.id.btn_palabras);
         bimagenes = findViewById(R.id.btn_imagenes);
         binfo = findViewById(R.id.btn_info);
 
         insertpablabra.setOnClickListener(this);
         bconsultar.setOnClickListener(this);
         bborrar.setOnClickListener(this);
-        bempezar.setOnClickListener(this);
+        //bempezar.setOnClickListener(this);
         bimagenes.setOnClickListener(this);
 
         binfo.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +49,7 @@ public class activity_antesComenzar extends AppCompatActivity implements View.On
             case R.id.btn_agregar : i = new Intent(this,activity_insertarPalabra.class);startActivity(i); break;
             case R.id.btn_flashcards : i = new Intent(this,activity_seleccionarempezar.class);startActivity(i); break;
             case R.id.btn_borrar : i = new Intent(this,Borrar_palabras.class);startActivity(i); break;
-            case R.id.btn_palabras : i = new Intent(this,Lista_palabras.class);startActivity(i); break;
+            //case R.id.btn_palabras : i = new Intent(this,Lista_palabras.class);startActivity(i); break;
             case R.id.btn_imagenes : i = new Intent(this,activity_seleccionarImagenes.class);startActivity(i); break;
     }
 }}

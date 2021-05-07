@@ -43,7 +43,7 @@ public class Lista_palabras extends AppCompatActivity {
         });
 
 
-            AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,1);
+            AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,2);
             SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
 
             Cursor fila = BaseDeDatabase.rawQuery("select palabra from palabras",null);

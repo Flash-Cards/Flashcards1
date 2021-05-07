@@ -19,7 +19,9 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+    public void onUpgrade(SQLiteDatabase BaseDeDatos, int oldVersion, int newVersion) {
+        if (newVersion > oldVersion) {
+            //BaseDeDatos.execSQL("ALTER TABLE palabras ADD COLUMN audio2 text");
+        }
     }
 }

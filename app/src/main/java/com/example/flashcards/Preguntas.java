@@ -9,7 +9,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,6 +38,8 @@ public class Preguntas extends AppCompatActivity {
     byte [] imageBytes;
     Random opciones= new Random();
     int opcion1, opcion2, opcion3, opcion4;
+    private SoundPool soundPool;
+    private int soundError;
 
     private static final String LOG_TAG = "AudioRecordTest";
     private MediaPlayer player = null;
@@ -56,10 +61,25 @@ public class Preguntas extends AppCompatActivity {
         bsalir = findViewById(R.id.btn_salir);
         imagen = (ImageView) findViewById(R.id.imagen);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+            soundPool = new SoundPool.Builder()
+                    .setMaxStreams(1)
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+        } else {
+            soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        soundError = soundPool.load(this, R.raw.error_sound, 1);
+
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //proceso preguntas
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 2);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
 
         Cursor fila = BaseDeDatabase.rawQuery("select palabra, audio, imagen from palabras where seleccion=1", null);
@@ -106,8 +126,13 @@ public class Preguntas extends AppCompatActivity {
 
         }
 
+        // Keeps the option buttons unable from being pressed before listening to the word(audio) first.
+        bopcion1.setEnabled(false);
+        bopcion2.setEnabled(false);
+        bopcion3.setEnabled(false);
+        bopcion4.setEnabled(false);
 
-        //botones
+        // Button to play the audio of the word and enabling the option buttons.
         bpregunta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,6 +144,10 @@ public class Preguntas extends AppCompatActivity {
                 } catch (IOException e) {
                     Log.e(LOG_TAG, "prepare() failed");
                 }
+                bopcion1.setEnabled(true);
+                bopcion2.setEnabled(true);
+                bopcion3.setEnabled(true);
+                bopcion4.setEnabled(true);
             }
         });
 
@@ -150,17 +179,18 @@ public class Preguntas extends AppCompatActivity {
                     bopcion2.setEnabled(false);
                     bopcion3.setEnabled(false);
                     bopcion4.setEnabled(false);
-
+                    mhandler.postDelayed(siguiente,4000);
                 }else{
                     bopcion1.setBackgroundResource(R.drawable.red);
                     bopcion1.setTextColor(Color.parseColor("#ffffff"));
+                    soundPool.play(soundError, (float) 0.3, (float) 0.3, 0, 0, (float) .85);
                     bopcion1.setEnabled(false);
                     bopcion2.setEnabled(false);
                     bopcion3.setEnabled(false);
                     bopcion4.setEnabled(false);
+                    mhandler.postDelayed(siguiente,2000);
                 }
                 //bopcion1.setBackgroundColor(Color.parseColor("#000000"));
-                mhandler.postDelayed(siguiente,4000);
 
             }
         });
@@ -181,17 +211,18 @@ public class Preguntas extends AppCompatActivity {
                     bopcion2.setEnabled(false);
                     bopcion3.setEnabled(false);
                     bopcion4.setEnabled(false);
-
+                    mhandler.postDelayed(siguiente,4000);
                 }else{
                     bopcion2.setBackgroundResource(R.drawable.red);
                     bopcion2.setTextColor(Color.parseColor("#ffffff"));
+                    soundPool.play(soundError, (float) 0.3, (float) 0.3, 0, 0, (float) .85);
                     bopcion1.setEnabled(false);
                     bopcion2.setEnabled(false);
                     bopcion3.setEnabled(false);
                     bopcion4.setEnabled(false);
+                    mhandler.postDelayed(siguiente,2000);
                 }
                 //bopcion2.setBackgroundColor(Color.parseColor("#000000"));
-                mhandler.postDelayed(siguiente,4000);
             }
         });
 
@@ -211,17 +242,18 @@ public class Preguntas extends AppCompatActivity {
                     bopcion2.setEnabled(false);
                     bopcion3.setEnabled(false);
                     bopcion4.setEnabled(false);
-
+                    mhandler.postDelayed(siguiente,4000);
                 }else{
                     bopcion3.setBackgroundResource(R.drawable.red);
                     bopcion3.setTextColor(Color.parseColor("#ffffff"));
+                    soundPool.play(soundError, (float) 0.3, (float) 0.3, 0, 0, (float) .85);
                     bopcion1.setEnabled(false);
                     bopcion2.setEnabled(false);
                     bopcion3.setEnabled(false);
                     bopcion4.setEnabled(false);
+                    mhandler.postDelayed(siguiente,2000);
                 }
                 //bopcion3.setBackgroundColor(Color.parseColor("#000000"));
-                mhandler.postDelayed(siguiente,4000);
 
             }
         });
@@ -242,16 +274,19 @@ public class Preguntas extends AppCompatActivity {
                     bopcion2.setEnabled(false);
                     bopcion3.setEnabled(false);
                     bopcion4.setEnabled(false);
+                    mhandler.postDelayed(siguiente,4000);
                 }else{
                     bopcion4.setBackgroundResource(R.drawable.red);
                     bopcion4.setTextColor(Color.parseColor("#ffffff"));
+                    soundPool.play(soundError, (float) 0.3, (float) 0.3, 0, 0, (float) .85);
                     bopcion1.setEnabled(false);
                     bopcion2.setEnabled(false);
                     bopcion3.setEnabled(false);
                     bopcion4.setEnabled(false);
+                    mhandler.postDelayed(siguiente,2000);
                 }
                 //bopcion4.setBackgroundColor(Color.parseColor("#000000"));
-                mhandler.postDelayed(siguiente,4000);
+
 
             }
         });
@@ -269,6 +304,8 @@ public class Preguntas extends AppCompatActivity {
 
     public void onDestroy() {
         super.onDestroy();
+        soundPool.release();
+        soundPool = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             finishAndRemoveTask();
         }

@@ -83,7 +83,7 @@ public class activity_modificarBorrar extends AppCompatActivity {
 
         mpalabra = getIntent().getStringExtra("palabra");
 
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,2);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
 
         Cursor fila = BaseDeDatabase.rawQuery("select palabra, audio, imagen from palabras where palabra='"+mpalabra+"'",null);
@@ -259,7 +259,7 @@ public class activity_modificarBorrar extends AppCompatActivity {
     }
 
     private void Modificar() {
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,2);
         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
         Bitmap imageToStoreBitmap = imageToStore;
@@ -296,7 +296,7 @@ public class activity_modificarBorrar extends AppCompatActivity {
     }
 
     public void eliminar(String pa){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"Palabras",null,2);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
 
         int cant = BaseDeDatabase.delete("palabras", "palabra='" + pa+"'", null);

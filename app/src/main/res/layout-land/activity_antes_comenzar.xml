@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:rowCount="1"
-        android:columnCount="6"
+        android:columnCount="5"
         android:layout_centerVertical="true"
         >
 
@@ -100,11 +100,11 @@
                 <ImageView
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:src="@drawable/ic_fc" />
+                    android:src="@drawable/ic_fcrenewed" />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:text="FlashCards"
+                    android:text="FlashCards Palabras"
                     android:textStyle="bold"
                     android:textColor="#000000"
                     android:textAlignment="center"
@@ -117,7 +117,7 @@
             android:layout_width="10dp"
             android:layout_height="135dp"
             android:layout_row="0"
-            android:layout_column="3"
+            android:layout_column="4"
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
@@ -149,47 +149,11 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/btn_palabras"
-            android:layout_width="10dp"
-            android:layout_height="135dp"
-            android:layout_row="0"
-            android:layout_column="4"
-            android:layout_gravity="fill"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="5dp"
-            android:layout_marginRight="20dp"
-            app:cardCornerRadius="25dp"
-            app:cardElevation="5dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal">
-
-                <ImageView
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:src="@drawable/ic_list" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Palabras"
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:textAlignment="center"
-                    android:gravity="center_horizontal" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
             android:id="@+id/btn_imagenes"
             android:layout_width="10dp"
             android:layout_height="135dp"
             android:layout_row="0"
-            android:layout_column="5"
+            android:layout_column="3"
             android:layout_gravity="fill"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
@@ -208,11 +172,11 @@
                 <ImageView
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:src="@drawable/ic_list" />
+                    android:src="@drawable/ic_imageneslogo" />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:text="Imágenes"
+                    android:text="FlashCards Imágenes"
                     android:textStyle="bold"
                     android:textColor="#000000"
                     android:textAlignment="center"

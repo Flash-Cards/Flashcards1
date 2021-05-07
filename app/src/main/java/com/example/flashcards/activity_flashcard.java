@@ -43,7 +43,7 @@ public class activity_flashcard extends AppCompatActivity {
         bpreguntas= findViewById(R.id.bpreguntas);
         tflash = findViewById(R.id.tflash);
 
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 1);
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "Palabras", null, 2);
         SQLiteDatabase BaseDeDatabase = admin.getWritableDatabase();
          //consulta
         Cursor fila = BaseDeDatabase.rawQuery("select palabra from palabras where seleccion = 1", null);
@@ -70,7 +70,7 @@ public class activity_flashcard extends AppCompatActivity {
         bpreguntas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), Preguntas.class);
+                Intent intent = new Intent(v.getContext(), PreguntasAudio.class);
                 startActivity(intent);
             }
         });
