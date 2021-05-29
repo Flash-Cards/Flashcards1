@@ -59,6 +59,7 @@ public class PreguntasAudio extends AppCompatActivity {
     final ArrayList<String> thirdOption = new ArrayList<>();
     final ArrayList<String> fourthOption = new ArrayList<>();
     String respuesta;
+    int previousWord;
 
     boolean audioPressed1 = false;
     boolean audioPressed2 = false;
@@ -109,6 +110,13 @@ public class PreguntasAudio extends AppCompatActivity {
 
         Cursor fila = BaseDeDatabase.rawQuery("select palabra, audio, imagen from palabras where seleccion=1", null);
 
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            previousWord = extras.getInt("Palabra Anterior");
+        } else {
+            Log.d("Debug","Intent was null");
+        }
 
         if (fila.moveToFirst()) {
             if (fila.moveToFirst()) {
@@ -125,14 +133,20 @@ public class PreguntasAudio extends AppCompatActivity {
             }
         }
         int npalabras = listapalabras.size();
+        int pregunta = opciones.nextInt(npalabras);
 
-        final int pregunta = opciones.nextInt(npalabras);
+        if (previousWord == pregunta) {
+            do{
+                pregunta = opciones.nextInt(npalabras);
+            } while (previousWord == pregunta);
+        }
 
         int i = 0;
 
         if (i < npalabras){
             //Tpregunta.setText("Cual es "+listapalabras.get(pregunta).toString()+" ?");
             pathsito = listapathsito.get(pregunta).toString();
+            previousWord = pregunta;
             boolean repetir = true;
             while(repetir) {
                 opcion1 = opciones.nextInt(npalabras);
@@ -368,6 +382,7 @@ public class PreguntasAudio extends AppCompatActivity {
         @Override
         public void run() {
             Intent intent = new Intent(getBaseContext(), PreguntasAudio.class);
+            intent.putExtra("Palabra Anterior", previousWord);
             startActivity(intent);
             finish();
         }

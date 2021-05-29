@@ -12,10 +12,12 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -27,12 +29,15 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class activity_insertarPalabra extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
     EditText etpalabra;
     Button binsertar, bseleccionarimagen, boton_grabar, boton_reproducir, boton_detenerg, boton_detenerr, boton_salir;
     ImageView Vimagen;
@@ -49,6 +54,8 @@ public class activity_insertarPalabra extends AppCompatActivity {
     private static String fileName = null;
     private MediaRecorder recorder = null;
     private MediaPlayer player = null;
+
+    boolean imageTooBig = false;
 
     private boolean permissionToRecordAccepted = false;
     private String [] permissions = {Manifest.permission.RECORD_AUDIO};
@@ -201,16 +208,35 @@ public class activity_insertarPalabra extends AppCompatActivity {
         catch (Exception e){
             Toast.makeText(this,e.getMessage(),Toast.LENGTH_SHORT).show();
         }
+        if (imageTooBig = true) {
+            binsertar.setEnabled(true);
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         try {
             super.onActivityResult(requestCode, resultCode, data);
-            if(requestCode==PICK_IMAGE_REQUEST && resultCode==RESULT_OK && data!=null && data.getData()!=null){
-                Imagepath=data.getData();
+            if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
+                Imagepath = data.getData();
+                //InputStream inputStream = getContentResolver().openInputStream(Imagepath);
                 imageToStore = MediaStore.Images.Media.getBitmap(getContentResolver(), Imagepath);
                 Vimagen.setImageBitmap(imageToStore);
+
+
+                Bitmap imageSize = imageToStore;
+                //int numBytesByRow = imageSize.getRowBytes() * imageSize.getHeight();
+                final int sizeInBytes = imageSize.getByteCount();
+                //Log.v(TAG, "numBytesByRow" + numBytesByRow);
+                //Log.v(TAG, "numBytesByCount" + sizeInBytes);
+                System.out.println(sizeInBytes);
+                if (sizeInBytes >= 10000000){
+                    Toast.makeText(activity_insertarPalabra.this, "El tamaño de la imagen es muy alto, porfavor elija otra imagen",Toast.LENGTH_SHORT).show();
+                    binsertar.setEnabled(false);
+                    imageTooBig = true;
+                } else {
+                    Toast.makeText(activity_insertarPalabra.this, "Imagen seleccionada", Toast.LENGTH_SHORT).show();
+                }
 
                 //Toast.makeText(this, ""+Imagepath.getLastPathSegment(), Toast.LENGTH_SHORT).show();
             }
@@ -227,6 +253,17 @@ public class activity_insertarPalabra extends AppCompatActivity {
         objectByteArrayOutputStream = new ByteArrayOutputStream();
         imageToStoreBitmap.compress(Bitmap.CompressFormat.JPEG,100,objectByteArrayOutputStream);
         imageInBytes=objectByteArrayOutputStream.toByteArray();
+        //System.out.println(imageInBytes);
+
+
+        //File file = new File(String.valueOf(Imagepath));
+
+        //File imageLength = new File(Imagepath.getPath());
+        //long length = imageLength.length() / 1024;
+        //System.out.println(length);
+
+        //long lengthbmp = (long) (imageInBytes.length / 1024.0/1024.0);
+        //System.out.println(lengthbmp);
 
         if (!palabra.isEmpty() && !fileName.isEmpty() && Imagepath != null){
             ContentValues registro= new ContentValues();
