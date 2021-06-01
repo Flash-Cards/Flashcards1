@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -35,6 +36,7 @@ public class activity_flashcard extends AppCompatActivity {
     private MediaPlayer player = null;
 
     Boolean repetir=true;
+    Boolean startCycle = true;
     //int carreglo=palabras.length;
 
     public int i=0;
@@ -79,6 +81,7 @@ public class activity_flashcard extends AppCompatActivity {
         bpreguntas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startCycle = false;
                 player.stop();
                 player.reset();
                 player.release();
@@ -103,31 +106,35 @@ public class activity_flashcard extends AppCompatActivity {
     };
 
     public void cicloflashcards(){
-                int canpalabra = listapalabras.get(i).toString().length();
-                int tamtexto,t,tamletra=100;
-                if(canpalabra > 7){
-                    tamtexto = canpalabra - 7;
-                    for (t=1;t<=tamtexto;t++){
-                        tamletra= tamletra-5;
+                if (startCycle != false){
+                    System.out.println("entrada");
+                    int canpalabra = listapalabras.get(i).toString().length();
+                    int tamtexto,t,tamletra=100;
+                    if(canpalabra > 7){
+                        tamtexto = canpalabra - 7;
+                        for (t=1;t<=tamtexto;t++){
+                            tamletra= tamletra-5;
+                        }
+                        tflash.setTextSize(tamletra);
+                    }else{
+                        tflash.setTextSize(tamletra);
                     }
-                    tflash.setTextSize(tamletra);
-                }else{
-                    tflash.setTextSize(tamletra);
+                    tflash.setText(listapalabras.get(i).toString());
+                    pathsito = listapathsito.get(i);
+                    player = new MediaPlayer();
+                    try {
+                        player.setDataSource(pathsito);
+                        player.prepare();
+                        player.start();
+                    } catch (IOException e) {
+                        Log.e(LOG_TAG, "prepare() failed");
+                    }
+                    System.out.println(i);
+                    if(i>=carreglo) {
+                        i = -1;
+                    }
+                    mhandler.postDelayed(cambiar,mTiempoEnMilis2);
                 }
-                tflash.setText(listapalabras.get(i).toString());
-                pathsito = listapathsito.get(i);
-                player = new MediaPlayer();
-                try {
-                    player.setDataSource(pathsito);
-                    player.prepare();
-                    player.start();
-                } catch (IOException e) {
-                    Log.e(LOG_TAG, "prepare() failed");
-                }
-                if(i>=carreglo) {
-                i = -1;
-        }
-                mhandler.postDelayed(cambiar,mTiempoEnMilis2);
         }
 
 
